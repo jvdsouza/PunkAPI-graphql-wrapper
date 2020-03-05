@@ -34,7 +34,7 @@ type Mash_temp {
 }
 
 type Fermentation {
-        temp: Temp
+        temp: Amount
 }
 
 type Ingredients {
@@ -60,6 +60,6 @@ type Amount {
         unit: String
 }
 
-Query {
-        getBeerByID(id:ID): Beer
+type Query {
+        getBeerByID(id:ID!): Beer
 }
