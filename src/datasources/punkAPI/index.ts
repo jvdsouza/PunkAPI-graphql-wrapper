@@ -5,6 +5,7 @@ class PunkAPI extends RESTDataSource {
         super();
         this.baseURL = 'https://api.punkapi.com/v2/';
     }
+
 }
 
 export default PunkAPI;

@@ -1,0 +1,65 @@
+type Beer {
+        id: ID!
+        name: String!
+        tagline: String
+        first_brewed: String
+        description: String
+        image_url: String
+        abv: Float
+        ibu: Float
+        target_fg: Float
+        target_og: Float
+        ebc: Float
+        srm: Float
+        ph: Float
+        attenuation_level: Float
+        volume: Amount
+        boil_volume: Amount
+        method: Method
+        ingredients: Ingredients
+        food_pairing: String
+        brewer_tips: String
+}
+
+
+type Method {
+        mash_temp: [Mash_temp]
+        fermentation: Fermentation
+        twist: Boolean
+}
+
+type Mash_temp {
+        temp: Amount
+        duration: String
+}
+
+type Fermentation {
+        temp: Temp
+}
+
+type Ingredients {
+        malt: [Malt]
+        hops: [Hops]
+        yeast: String
+}
+
+type Malt {
+        name: String
+        amount: Amount
+}
+
+type Hops {
+        name: String
+        amount: Amount
+        add: String
+        attribute: String
+}
+
+type Amount {
+        value: Float
+        unit: String
+}
+
+Query {
+        getBeerByID(id:ID): Beer
+}
