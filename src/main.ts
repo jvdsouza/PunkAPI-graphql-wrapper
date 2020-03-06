@@ -6,8 +6,9 @@ import compression from 'compression';
 import cors from 'cors';
 
 import { environment } from './environment';
-import { resolvers } from './resolvers';
 import * as typeDefs from './schema.graphql';
+import { resolvers } from './resolvers/resolvers';
+import PunkAPI from './datasources/punkAPI/PunkApiClass';
 import { 
     DateTimeMock, 
     EmailAddressMock, 
@@ -26,11 +27,14 @@ import {
         const app = express();
 
         const server = new ApolloServer({ 
-            resolvers,
             typeDefs: [
                 DIRECTIVES,
                 typeDefs
             ],
+            resolvers,
+            dataSources: () => ({
+                PunkAPI: new PunkAPI(),
+            }),
             mocks: environment.apollo.mocks 
                 ? {
                     DateTime: DateTimeMock,

@@ -19,6 +19,7 @@ type Beer {
         ingredients: Ingredients
         food_pairing: String
         brewer_tips: String
+        contributed_by: String
 }
 
 
